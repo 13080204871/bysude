@@ -1,28 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("themeBtn");
-
-  btn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      btn.innerText = "☀️ Aydınlık Mod";
-    } else {
-      btn.innerText = "🌙 Karanlık Mod";
-    }
-  });
+// Dark mode
+const btn = document.getElementById("themeBtn");
+btn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 });
-// Scroll animation
-const reveals = document.querySelectorAll(".reveal");
 
-function revealOnScroll() {
-  reveals.forEach(el => {
-    const windowHeight = window.innerHeight;
-    const top = el.getBoundingClientRect().top;
-    if (top < windowHeight - 100) {
-      el.classList.add("active");
+// Scroll Animations
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
     }
   });
-}
+}, { threshold: 0.15 });
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+cards.forEach(card => {
+  observer.observe(card);
+});
