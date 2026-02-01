@@ -162,3 +162,20 @@ body.dark .portfolio-card {
 .portfolio-card h3 {
   margin-bottom: 8px;
 }
+/* Scroll animation */
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover pro feel */
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
